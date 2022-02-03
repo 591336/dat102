@@ -16,8 +16,9 @@ import no.hvl.dat102.klienter.Kunde;
 
 public abstract class KoeADTTest {
 
+
 	// referanse for kø
-	private KoeADT<Kunde> koe;
+	protected KoeADT<Kunde> koe;
 
 	// testdata
 	private Kunde k0 = new Kunde(20);
@@ -51,10 +52,10 @@ public abstract class KoeADTTest {
 		koe.innKoe(k2);
 
 		try {
-			assertEquals(k2, koe.utKoe());
-			assertEquals(k1, koe.utKoe());
-			assertEquals(k1, koe.utKoe());
 			assertEquals(k0, koe.utKoe());
+			assertEquals(k1, koe.utKoe());
+			assertEquals(k1, koe.utKoe());
+			assertEquals(k2, koe.utKoe());
 		} catch (EmptyCollectionException e) {
 			fail("pop feilet uventet" + e.getMessage());
 		}
@@ -72,7 +73,7 @@ public abstract class KoeADTTest {
 			koe.innKoe(k3);
 			koe.innKoe(k4);
 			koe.utKoe();
-			assertEquals(k3, koe.foerste());
+			assertEquals(k4, koe.foerste());
 
 		} catch (EmptyCollectionException e) {
 			fail("pop eller peek feilet uventet " + e.getMessage());
@@ -123,4 +124,8 @@ public abstract class KoeADTTest {
 			koe.utKoe();
 		});
 	}
+	
 }
+
+
+

@@ -16,12 +16,28 @@ import no.hvl.dat102.kjedet.KjedetKoe;
 import no.hvl.dat102.klienter.Kunde;
 import no.hvl.dat102.tabell.*;
 
-
-
 public class TabellSirkulaerTest extends KoeADTTest {
 
 	@Override
 	protected KoeADT<Kunde> reset() {
 		return new TabellSirkulaerKoe<Kunde>();
+	}
+
+	@Test
+	public void utviderSeg() {
+		Kunde k6 = new Kunde(20);
+		int size = 4;
+		TabellSirkulaerKoe<Kunde> utvidet = new TabellSirkulaerKoe<Kunde>(size);
+		for (int i = 0; i < size + 2; i++) {
+			utvidet.innKoe(k6);
+		}
+		try {
+			for (int j = 0; j < size + 2; j++) {
+				utvidet.utKoe();
+			}
+		} catch (EmptyCollectionException e) {
+			fail("Uventet feil " + e.getMessage());
+		}
+		assertTrue(utvidet.erTom());
 	}
 }
