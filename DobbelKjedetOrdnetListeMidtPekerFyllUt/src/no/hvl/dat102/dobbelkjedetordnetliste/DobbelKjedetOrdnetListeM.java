@@ -18,11 +18,13 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 	/******************************************************************
 	 * Oppretter en tom liste.
 	 ******************************************************************/
-	// Konstruktør
+	// Konstruktï¿½r
+	
+	
 
 	public DobbelKjedetOrdnetListeM(T minVerdi, T maksVerdi) {
 
-		// Første node
+		// Fï¿½rste node
 		DobbelNode<T> nyNode1 = new DobbelNode<T>(minVerdi);
 		foerste = nyNode1;
 		midten = foerste;
@@ -45,7 +47,7 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 	@Override
 	public void leggTil(T el) {
 
-		// Setter inn ordnet før den noden p peker på
+		// Setter inn ordnet fï¿½r den noden p peker pï¿½
 		DobbelNode<T> p;
 
 		if ((el.compareTo(foerste.getElement()) <= 0) || (el.compareTo(siste.getElement()) >= 0)) {
@@ -59,7 +61,7 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 			if (el.compareTo(midten.getElement()) >= 0) {// Finn plass i siste
 															// halvdel
 				p = midten.getNeste();
-			} else { // Finn plass i første halvdel
+			} else { // Finn plass i fï¿½rste halvdel
 				p = foerste.getNeste();
 			}
 
@@ -68,11 +70,11 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 			} // while
 
 			// Setter inn:
-			// Innsett foran noden som p peker på
+			// Innsett foran noden som p peker pï¿½
 
 			DobbelNode<T> nyNode = new DobbelNode<T>(el);
 
-			// Fyll ut med noen få setninger
+			// Fyll ut med noen fï¿½ setninger
 
 			// Oppdaterer ny midten
 			nyMidten();
@@ -82,9 +84,9 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 	}//
 
 	// **********************************************************************************
-	// Hjelpemetode til å finne ny midten.
-	// Mindre effektiv fordi vi må gjennomgå ca halve listen, men greit nok,
-	// ellers kan en teste på om antall er partall er oddetall ved oppdatering
+	// Hjelpemetode til ï¿½ finne ny midten.
+	// Mindre effektiv fordi vi mï¿½ gjennomgï¿½ ca halve listen, men greit nok,
+	// ellers kan en teste pï¿½ om antall er partall er oddetall ved oppdatering
 	// av midtpeker
 	// *********************************************************************************
 	private void nyMidten() {
@@ -110,8 +112,8 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 
 		} else { // Kun lovlige verdier
 			if (el.compareTo(midten.getElement()) >= 0) { // Let i siste halvdel
-				p = midten; // Midten defineres å tilhøre siste del
-			} else { // Let i første halvdel
+				p = midten; // Midten defineres ï¿½ tilhï¿½re siste del
+			} else { // Let i fï¿½rste halvdel
 				p = foerste.getNeste();
 			}
 
@@ -119,7 +121,7 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 				p = p.getNeste();
 			} // while
 
-			// Test på funnet
+			// Test pï¿½ funnet
 			if (el.compareTo(p.getElement()) == 0) {
 				funnet = true;
 			}
@@ -131,7 +133,7 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 	// *
 	// *
 	// ***********************************************************************************
-    // Omskrive til å bruke finn-metoden
+    // Omskrive til ï¿½ bruke finn-metoden
 	@Override
 	public T fjern(T el) {
 		T resultat = null;
@@ -161,7 +163,7 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 			if (funnet) {
 				// Tar ut 
 				antall = antall - 1;
-				// Fyll ut med noen få setninger.
+				// Fyll ut med noen fï¿½ setninger.
 
 				// Oppadtere midten
 				nyMidten();
@@ -182,15 +184,15 @@ public class DobbelKjedetOrdnetListeM<T extends Comparable<T>> implements Dobbel
 
 		// Kun lovlige verdier
 		if (el.compareTo(midten.getElement()) >= 0) { // Let i siste halvdel
-			p = midten; // Midten defineres å tilhøre siste del
-		} else { // Let i første halvdel
+			p = midten; // Midten defineres ï¿½ tilhï¿½re siste del
+		} else { // Let i fï¿½rste halvdel
 			p = foerste.getNeste();
 		}
 		while (el.compareTo(p.getElement()) > 0) {
 			p = p.getNeste();
 		} // while
 
-		// Test på funnet
+		// Test pï¿½ funnet
 		if (el.compareTo(p.getElement()) == 0) {
 			node = p;
 		}

@@ -26,7 +26,10 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			throw new EmptyCollectionException("ordnet liste");
 
 		T resultat = null;
-		// ...Fyll ut
+		LinearNode<T> denne = foerste;
+		foerste = foerste.getNeste();
+		denne = null;
+		antall--;
 		return resultat;
 	}
 
@@ -73,7 +76,10 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	@Override
 	public void leggTil(T element) {
 
-		// ...Fyll ut
+		LinearNode<T> forrige = null, denne;
+		if (forrige == null) { // Fï¿½rste element
+			denne = foerste;
+		}
 	}
 
 	@Override
@@ -87,7 +93,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (denne != null && element.equals(denne.getElement())) { // funnet
 			antall--;
 			svar = denne.getElement();
-			if (forrige == null) { // Første element
+			if (forrige == null) { // Fï¿½rste element
 				foerste = foerste.getNeste();
 				if (foerste == null) { // Tom liste
 					siste = null;
